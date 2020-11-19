@@ -11,13 +11,13 @@ class TipoLibro(DjangoObjectType):
         model = Libro
 
 class Query(object):
-    allCateorias = graphene.List(TipoCategoria)
+    all_Categorias = graphene.List(TipoCategoria)
     allLibros = graphene.List(TipoLibro)
 
-    def resolve_all_categorias(self, info, **kwargs):
+    def resolve_all_Categorias(self, info, **kwargs):
         return Categoria.objects.all()
     
-    def resolve_all_libros (self, info, **kwargs):
+    def resolve_allLibros (self, info, **kwargs):
         return Libro.objects.select_related('Categoria').all()
 
     def resolve_hello(self, info, **kwargs):

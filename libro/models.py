@@ -16,4 +16,4 @@ class Libro (models.Model):
         Categoria, related_name='libro', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return self.titulo
