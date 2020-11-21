@@ -22,3 +22,30 @@ class Query(object):
 
     def resolve_hello(self, info, **kwargs):
         return "world"
+
+class NuevoLibro(graphene.Mutation):
+    id = graphene.Int()
+    titulo = graphene.String()
+    sinopsis = graphene.String()
+    autor = graphene.String()
+    Categoria_id = graphene.Int(name="Categoria")
+
+    class Arguments:
+        titulo = graphene.String()
+        sinopsis = graphene.String()
+        autor = graphene.String()
+        Categoria_id = graphene.Int(name="Categoria")
+
+    
+    def mutate(self, info, titulo, sinopsis, autor, Categoria_id):
+        libro = Libro(titulo=titulo, sinopsis=sinopsis, autor=autor, Categoria_id=Categoria_id)
+        libro.save()
+
+        return NuevoLibro(
+            id=libro.id,
+            titulo=libro.titulo,
+        )
+
+class Mutation(graphene.ObjectType):
+    crear_libro = NuevoLibro.Field()
+
