@@ -124,5 +124,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 GRAPHENE = { 'SCHEMA': 'biblioteca.schema.schema', }
 CORS_ORIGIN_WHITELIST = (
- 'http://localhost:8083',
+ 'http://localhost:8080',
  )
